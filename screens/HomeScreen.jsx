@@ -1,4 +1,4 @@
-import { Text, View, Image } from "react-native";
+import { View, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import tw from "twrnc";
 import NavOptions from "../components/NavOptions";

@@ -1,6 +1,7 @@
 import { FlatList, Text, TouchableOpacity, View, Image } from 'react-native'
 import tw from "twrnc";
 import { Icon } from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
 
 const data = [
     {
@@ -18,13 +19,16 @@ const data = [
     }
 ]
 const NavOptions = () => {
+  const navigation = useNavigation();
   return (
     <FlatList
       horizontal
       data={data}
       keyExtractor={(item) => item.id}
       renderItem={({item}) => (
-        <TouchableOpacity style={[tw`pl-4 pt-5 pb-4 pr-4 m-2 bg-gray-200`]}>
+        <TouchableOpacity 
+          onPress={() => navigation.navigate("MapScreen")}
+          style={[tw`pl-4 pt-5 pb-4 pr-4 m-2 bg-gray-200 rounded-lg`]}>
             <View>
             <Image 
                 style={{width: 120, height: 120, resizeMode: "contain"}}
@@ -32,11 +36,12 @@ const NavOptions = () => {
                     uri: item.img,
                 }}
             />
-                <Text style={[tw`text-center pt-4`]}>{item.title}</Text>
+                <Text style={[tw`pt-4`]}>{item.title}</Text>
                 <Icon
                   name='arrowright'
-                  style={[tw`bg-primary-content`]}
+                  style={[tw`bg-black rounded-full w-10 p-2 mt-4`]}
                   type="antdesign"
+                  color="white"
                 />
             </View>
         </TouchableOpacity>
